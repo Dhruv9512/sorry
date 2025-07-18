@@ -229,8 +229,7 @@ export default function PawsitivelySorry() {
               className="font-headline mt-8"
               size="lg"
             >
-              <Heart className="mr-2 fill-primary-foreground" /> Forgiven, always  💖 
-            </Button>
+              <Heart className="mr-2 fill-primary-foreground" /> Forgiven, always  💖 </Button>
           </div>
         );
       case "forgiven":
