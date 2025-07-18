@@ -150,7 +150,6 @@ export default function PawsitivelySorry() {
 
   const handleIntroClick = () => {
     audioRef.current?.startMusic();
-    audioRef.current?.playMeow();
     setStep("slideshow");
   };
 
