@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Heart, ChevronsRight, Gift } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -115,7 +115,7 @@ export default function PawsitivelySorry() {
             style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')", backgroundBlendMode: 'overlay' }}
             data-ai-hint="soft focus flower garden"
           >
-             <div className={cn("bg-background/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-xl transition-opacity duration-500", showSlide ? 'opacity-100' : 'opacity-0')}>
+             <div className={cn("bg-background/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-xl transition-opacity duration-500 border-2 border-primary/30", showSlide ? 'opacity-100' : 'opacity-0')}>
                 {currentSlide.image && (
                    <div className="mb-6 flex justify-center">
                     <Image

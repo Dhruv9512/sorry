@@ -17,8 +17,8 @@ const ShyCat = (props: SVGProps<SVGSVGElement>) => (
       <path stroke="#000" strokeWidth="3" d="M85 95q5 5 10 0 M105 95q5 5 10 0" fill="none" strokeLinecap="round"/>
       
       {/* Blushing cheeks */}
-      <ellipse cx="75" cy="108" rx="10" ry="5" fill="#FFB6C1" opacity="0.7" />
-      <ellipse cx="125" cy="108" rx="10" ry="5" fill="#FFB6C1" opacity="0.7" />
+      <ellipse cx="75" cy="108" rx="12" ry="6" fill="#FFB6C1" opacity="0.8" />
+      <ellipse cx="125" cy="108" rx="12" ry="6" fill="#FFB6C1" opacity="0.8" />
 
       {/* Paws together */}
       <path d="M90 130 C 80 145, 90 155, 100 150 C 110 155, 120 145, 110 130" fill="#b0b0b0" />

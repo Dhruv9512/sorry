@@ -10,14 +10,14 @@ const CatWithBanner = (props: SVGProps<SVGSVGElement>) => (
   >
     <g>
       {/* Banner */}
-      <path fill="#FFB6C1" d="M10 80h180v40H10z" />
-      <path fill="#E6E6FA" d="M10 80h5v40h-5z M190 80h-5v40h5z" />
+      <path fill="hsl(var(--primary))" d="M10 80h180v40H10z" />
+      <path fill="hsl(var(--card))" d="M10 80h5v40h-5z M190 80h-5v40h5z" />
       <text
         x="100"
         y="107"
         fontFamily="Belleza, sans-serif"
         fontSize="24"
-        fill="#b32e44"
+        fill="hsl(var(--primary-foreground))"
         textAnchor="middle"
       >
         Sorry
@@ -28,10 +28,12 @@ const CatWithBanner = (props: SVGProps<SVGSVGElement>) => (
       <circle fill="#d3d3d3" cx="100" cy="100" r="40" />
 
       {/* Eyes */}
-      <circle fill="#fff" cx="88" cy="95" r="7" />
-      <circle fill="#fff" cx="112" cy="95" r="7" />
-      <circle fill="#000" cx="88" cy="95" r="3" />
-      <circle fill="#000" cx="112" cy="95" r="3" />
+      <circle fill="#fff" cx="88" cy="95" r="8" />
+      <circle fill="#fff" cx="112" cy="95" r="8" />
+      <circle fill="#000" cx="88" cy="95" r="4" />
+      <circle fill="#000" cx="112" cy="95" r="4" />
+      <circle fill="#fff" cx="90" cy="93" r="2" />
+      <circle fill="#fff" cx="114" cy="93" r="2" />
 
       {/* Paws holding banner */}
       <circle cx="65" cy="100" r="10" fill="#d3d3d3" />
