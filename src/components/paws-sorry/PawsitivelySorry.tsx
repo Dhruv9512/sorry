@@ -96,8 +96,8 @@ export default function PawsitivelySorry() {
                 <p className="text-2xl md:text-3xl min-h-[140px] md:min-h-[100px] flex items-center justify-center">
                   {currentSlide.text}
                 </p>
-                <Button onClick={handleNextSlide} className="font-headline mt-6" size="lg">
-                <ChevronsRight className="mr-2" /> Next
+                <Button onClick={handleNextSlide} className="font-headline mt-6 rounded-full" size="lg">
+                 Next <ChevronsRight className="ml-2" />
                 </Button>
             </div>
           </div>
