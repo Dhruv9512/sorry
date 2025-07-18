@@ -19,7 +19,7 @@ const apologySlides = [
     image: {
       src: "https://placehold.co/400x400.png",
       alt: "A picture of the person being apologized to",
-      hint: "woman smiling"
+      hint: "woman thinking"
     }
   },
   { 
@@ -31,11 +31,11 @@ const apologySlides = [
     }
   },
   { 
-    text: "...and I realize my actions were not very purr-fect.",
+    text: "I realize my actions were not very purr-fect.",
     image: {
       src: "https://placehold.co/400x400.png",
       alt: "A picture of the person being apologized to",
-      hint: "woman thinking"
+      hint: "woman looking down"
     }
   },
   { 
@@ -47,12 +47,28 @@ const apologySlides = [
     }
   },
   { 
-    text: "You're the most important person in my world, and the thought of losing you is un-bear-able.",
+    text: "You're the most important person in my world...",
     image: {
       src: "https://placehold.co/400x400.png",
       alt: "A picture of the person being apologized to",
       hint: "woman cute"
     }
+  },
+  { 
+    text: "...and the thought of you being upset is un-bear-able.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman pensive"
+    }
+  },
+  {
+    text: "I promise to be a better kitty and cherish our moments together.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman smiling"
+    },
   },
   { 
     text: "I am truly, paws-itively sorry from the bottom of my fluffy heart.",
@@ -64,18 +80,20 @@ const apologySlides = [
   },
 ];
 
-const heartLayoutPositions = [
-  { top: '15%', left: '50%', transform: 'translate(-50%, -50%) scale(1.1) rotate(0deg)', size: 'large' }, 
-  { top: '35%', left: '30%', transform: 'translate(-50%, -50%) rotate(-20deg)', size: 'medium' },
-  { top: '35%', left: '70%', transform: 'translate(-50%, -50%) rotate(20deg)', size: 'medium' },
-  { top: '60%', left: '20%', transform: 'translate(-50%, -50%) rotate(-35deg)', size: 'small' },
-  { top: '60%', left: '80%', transform: 'translate(-50%, -50%) rotate(35deg)', size: 'small' },
-  { top: '85%', left: '50%', transform: 'translate(-50%, -50%) rotate(0deg)', size: 'medium' },
+const collageLayout = [
+    { top: '10%', left: '15%', transform: 'rotate(-10deg) scale(1)', size: 'medium' },
+    { top: '15%', left: '55%', transform: 'rotate(8deg) scale(1.1)', size: 'large' },
+    { top: '30%', left: '80%', transform: 'rotate(15deg) scale(0.9)', size: 'small' },
+    { top: '45%', left: '5%', transform: 'rotate(5deg) scale(1.05)', size: 'large' },
+    { top: '65%', left: '30%', transform: 'rotate(-12deg) scale(1)', size: 'medium' },
+    { top: '50%', left: '60%', transform: 'rotate(2deg) scale(0.95)', size: 'medium' },
+    { top: '75%', left: '75%', transform: 'rotate(-8deg) scale(1.1)', size: 'large' },
+    { top: '80%', left: '10%', transform: 'rotate(10deg) scale(0.9)', size: 'small' },
 ];
-
+  
 const imageSizes = {
-    large: "w-36 h-36 md:w-48 md:h-48",
-    medium: "w-28 h-28 md:w-36 md:h-36",
+    large: "w-32 h-32 md:w-40 md:h-40",
+    medium: "w-28 h-28 md:w-32 md:h-32",
     small: "w-24 h-24 md:w-28 md:h-28",
 }
 
@@ -167,24 +185,20 @@ export default function PawsitivelySorry() {
         )
       case 'forgiven':
         return (
-            <div className="flex flex-col items-center text-center w-full max-w-3xl">
-                <h1 className="text-4xl md:text-5xl font-headline mt-8 animate-fade-in" style={{animationDelay: '0s'}}>You've made my heart so happy!</h1>
-                <p className="text-xl md:text-2xl mt-4 max-w-md animate-fade-in" style={{animationDelay: '0.5s'}}>
-                    Here's to many more happy memories together!
-                </p>
-                <div className="relative w-full h-[32rem] mt-8 animate-fade-in" style={{animationDelay: '1s'}}>
+            <div className="flex flex-col items-center justify-center text-center w-full h-full max-w-3xl">
+                <div className="relative w-full h-[32rem] md:h-[40rem] animate-fade-in" style={{ animationDelay: '1s' }}>
                     {apologySlides.map((slide, index) => {
-                        const position = heartLayoutPositions[index % heartLayoutPositions.length];
-                        const sizeClass = imageSizes[position.size as keyof typeof imageSizes] || imageSizes.medium;
+                        const layout = collageLayout[index % collageLayout.length];
+                        const sizeClass = imageSizes[layout.size as keyof typeof imageSizes] || imageSizes.medium;
                         return (
                             <div 
                                 key={index}
                                 className="absolute animate-fade-in"
                                 style={{ 
-                                    top: position.top, 
-                                    left: position.left, 
-                                    transform: position.transform,
-                                    animationDelay: `${1.5 + index * 0.25}s`,
+                                    top: layout.top, 
+                                    left: layout.left, 
+                                    transform: layout.transform,
+                                    animationDelay: `${1.5 + index * 0.2}s`,
                                     animationDuration: '1s',
                                 }}
                             >
@@ -194,7 +208,7 @@ export default function PawsitivelySorry() {
                                   width={150}
                                   height={150}
                                   className={cn(
-                                      "rounded-2xl border-4 border-primary shadow-2xl object-cover transition-transform hover:scale-110 hover:shadow-primary/50",
+                                      "rounded-2xl border-4 border-primary bg-card p-1 shadow-2xl object-cover transition-transform hover:scale-110 hover:shadow-primary/50",
                                       sizeClass
                                     )}
                                   data-ai-hint={slide.image.hint}
@@ -203,6 +217,10 @@ export default function PawsitivelySorry() {
                         )
                     })}
                 </div>
+                 <h1 className="text-4xl md:text-5xl font-headline mt-8 animate-fade-in" style={{ animationDelay: '0s', zIndex: 10 }}>You've made my heart so happy!</h1>
+                <p className="text-xl md:text-2xl mt-4 max-w-md animate-fade-in" style={{ animationDelay: '0.5s', zIndex: 10 }}>
+                    Here's to many more happy memories together!
+                </p>
             </div>
         )
     }
