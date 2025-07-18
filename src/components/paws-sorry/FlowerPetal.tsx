@@ -1,13 +1,24 @@
+import { useState, useEffect } from 'react';
+
 const FlowerPetal = () => {
-    const style: React.CSSProperties = {
-      left: `${Math.random() * 100}vw`,
-      animationDuration: `${Math.random() * 5 + 8}s`,
-      animationDelay: `${Math.random() * 7}s`,
-      transform: `scale(${Math.random() * 0.5 + 0.5})`,
-    };
+    const [style, setStyle] = useState<React.CSSProperties>({});
+    const [color, setColor] = useState<string>('');
   
-    const colors = ['#FFB6C1', '#E6E6FA', '#FFF0F5'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
+    useEffect(() => {
+      setStyle({
+        left: `${Math.random() * 100}vw`,
+        animationDuration: `${Math.random() * 5 + 8}s`,
+        animationDelay: `${Math.random() * 7}s`,
+        transform: `scale(${Math.random() * 0.5 + 0.5})`,
+      });
+  
+      const colors = ['#FFB6C1', '#E6E6FA', '#FFF0F5'];
+      setColor(colors[Math.floor(Math.random() * colors.length)]);
+    }, []);
+  
+    if (!color) {
+      return null;
+    }
   
     return (
       <div
@@ -29,4 +40,3 @@ const FlowerPetal = () => {
   };
   
   export default FlowerPetal;
-  
