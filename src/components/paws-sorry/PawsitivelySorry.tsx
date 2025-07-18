@@ -22,11 +22,46 @@ const apologySlides = [
       hint: "woman smiling"
     }
   },
-  { text: "...especially how it made my favorite person feel." },
-  { text: "...and I realize my actions were not very purr-fect." },
-  { text: "It was thoughtless and I have no excuse. I'm so sorry." },
-  { text: "You're the most important person in my world, and the thought of losing you is un-bear-able." },
-  { text: "I am truly, paws-itively sorry from the bottom of my fluffy heart." },
+  { 
+    text: "...especially how it made my favorite person feel.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman happy"
+    }
+  },
+  { 
+    text: "...and I realize my actions were not very purr-fect.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman thinking"
+    }
+  },
+  { 
+    text: "It was thoughtless and I have no excuse. I'm so sorry.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman sad"
+    }
+  },
+  { 
+    text: "You're the most important person in my world, and the thought of losing you is un-bear-able.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman cute"
+    }
+  },
+  { 
+    text: "I am truly, paws-itively sorry from the bottom of my fluffy heart.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman heart"
+    }
+  },
 ];
 
 export default function PawsitivelySorry() {
