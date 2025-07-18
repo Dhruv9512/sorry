@@ -14,15 +14,15 @@ import { cn } from '@/lib/utils';
 type Step = 'intro' | 'slideshow' | 'final' | 'forgiven';
 
 const apologySlides = [
-  { text: "I've been a silly kitty and I've been thinking a lot about what happened..." },
   { 
-    text: "Especially how it made my favorite person feel.",
+    text: "I've been a silly kitty and I've been thinking a lot about what happened...",
     image: {
       src: "https://placehold.co/400x400.png",
       alt: "A picture of the person being apologized to",
       hint: "woman smiling"
     }
   },
+  { text: "...especially how it made my favorite person feel." },
   { text: "...and I realize my actions were not very purr-fect." },
   { text: "It was thoughtless and I have no excuse. I'm so sorry." },
   { text: "You're the most important person in my world, and the thought of losing you is un-bear-able." },
