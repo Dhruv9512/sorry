@@ -26,9 +26,15 @@ const AudioPlayer = forwardRef<AudioPlayerHandle>((props, ref) => {
         volume: -6,
       }).toDestination();
 
-      Promise.all([musicPlayer.current.load(musicPlayer.current.buffer.url), meowPlayer.current.load(meowPlayer.current.buffer.url)]).catch(err => {
-        console.info("Could not load audio files. Please make sure they exist in /public/audio/");
-      });
+     Promise.all([
+      musicPlayer.current?.loaded,
+      meowPlayer.current?.loaded,
+    ]).then(() => {
+      console.log("Audio loaded");
+    }).catch(err => {
+      console.error("Error loading audio files", err);
+    });
+
 
       setIsInitialized(true);
     }

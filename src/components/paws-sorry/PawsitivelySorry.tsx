@@ -15,70 +15,63 @@ type Step = 'intro' | 'slideshow' | 'final' | 'forgiven';
 
 const apologySlides = [
   { 
-    text: "I've been a silly kitty and I've been thinking a lot about what happened...",
+    text: "I know I'm dumb sometimes... I don’t always understand what you're trying to tell me.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/WhatsApp%20Image%202025-07-18%20at%2014.41.58_95180d90.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman thinking"
     }
   },
   { 
-    text: "...especially how it made my favorite person feel.",
+    text: "I take things the wrong way and let my anger speak before my heart does...",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/Being_you-5bsdi0XgqqdZlPBCX7g9ayXd3xh6Bq.jpg",
       alt: "A picture of the person being apologized to",
-      hint: "woman happy"
+      hint: "woman concerned"
     }
   },
   { 
-    text: "I realize my actions were not very purr-fect.",
+    text: "I said things I didn’t mean... I wish I could take them all back.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/Birthday-hxSKIAm0BI4itaWNdyO5hLqPH3UDuv.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman looking down"
     }
   },
   { 
-    text: "It was thoughtless and I have no excuse. I'm so sorry.",
+    text: "Please believe me — those words meant nothing. You, *you* mean everything to me.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/M3-YuddJAdbHFU6wlOS1a0Dtlm4z3EAva.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman sad"
     }
   },
   { 
-    text: "You're the most important person in my world...",
+    text: "I'm truly sorry for hurting you... and for fighting with you all the time.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/WhatsApp%20Image%202025-05-09%20at%2010.59.43_494225fc-bm5rOdDBukCrFdXdezP8fuJaKc3Lpu.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman cute"
     }
   },
   { 
-    text: "...and the thought of you being upset is un-bear-able.",
+    text: "You mean so much to me... more than I can ever truly say.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/WhatsApp%20Image%202025-07-18%20at%2014.41.48_be2db70a.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman pensive"
     }
   },
   {
-    text: "I promise to be a better kitty and cherish our moments together.",
+    text: "Nushu, my favorite human — I’m really sorry. I never meant to hurt you. I promise to be more thoughtful, because you mean the world to me.",
     image: {
-      src: "https://placehold.co/400x400.png",
+      src: "https://mphkxojdifbgafp1.public.blob.vercel-storage.com/Mitsuha/Love-eDQy8tQtyuEu15yepajOPeo15YgmVX.jpg",
       alt: "A picture of the person being apologized to",
       hint: "woman smiling"
     },
   },
-  { 
-    text: "I am truly, paws-itively sorry from the bottom of my fluffy heart.",
-    image: {
-      src: "https://placehold.co/400x400.png",
-      alt: "A picture of the person being apologized to",
-      hint: "woman heart"
-    }
-  },
 ];
+
 
 const collageLayout = [
     { top: '10%', left: '15%', transform: 'rotate(-10deg) scale(1)', size: 'medium' },
@@ -140,36 +133,40 @@ export default function PawsitivelySorry() {
             </Button>
           </div>
         );
-      case 'slideshow':
-        const currentSlide = apologySlides[slideIndex];
-        return (
-          <div
-            className="flex flex-col items-center justify-center text-center p-4 w-full h-full bg-cover bg-center rounded-2xl"
-            style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')", backgroundBlendMode: 'overlay' }}
-            data-ai-hint="soft focus flower garden"
-          >
-             <div className={cn("bg-card/90 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-xl transition-opacity duration-500 border-4 border-primary", showSlide ? 'opacity-100' : 'opacity-0')}>
-                {currentSlide.image && (
-                   <div className="mb-6 flex justify-center">
-                    <Image
-                      src={currentSlide.image.src}
-                      alt={currentSlide.image.alt}
-                      width={200}
-                      height={200}
-                      className="rounded-2xl border-4 border-primary/50 shadow-lg object-cover w-48 h-48"
-                      data-ai-hint={currentSlide.image.hint}
-                    />
-                  </div>
-                )}
-                <p className="text-2xl md:text-3xl min-h-[140px] md:min-h-[100px] flex items-center justify-center">
-                  {currentSlide.text}
-                </p>
-                <Button onClick={handleNextSlide} className="font-headline mt-6 text-lg tracking-wider" size="lg">
-                 Next <ChevronsRight className="ml-2" />
-                </Button>
-            </div>
-          </div>
-        );
+     case 'slideshow':
+  const currentSlide = apologySlides[slideIndex];
+  return (
+    <div className="flex flex-col items-center justify-center text-center px-4 py-8 w-full h-full bg-cover bg-center rounded-2xl">
+      <div className={cn(
+        "bg-white/90 dark:bg-card/90 backdrop-blur-md p-6 sm:p-10 rounded-2xl shadow-2xl w-full max-w-2xl border-4 border-primary transition-opacity duration-500",
+        showSlide ? "opacity-100" : "opacity-0"
+      )}>
+        {currentSlide.image && (
+         <div className="mb-6 flex justify-center">
+          <Image
+            src={currentSlide.image.src}
+            alt={currentSlide.image.alt}
+            width={350}
+            height={350}
+            className="rounded-3xl border-4 border-pink-300 shadow-2xl object-cover w-80 h-80 sm:w-96 sm:h-96 transition-transform duration-500 ease-in-out"
+            data-ai-hint={currentSlide.image.hint}
+          />
+        </div>
+        )}
+        <p className="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed text-gray-800 dark:text-white min-h-[120px] flex items-center justify-center px-2">
+          {currentSlide.text}
+        </p>
+        <Button
+          onClick={handleNextSlide}
+          className="font-headline mt-8 text-base sm:text-lg tracking-wide"
+          size="lg"
+        >
+          Next <ChevronsRight className="ml-2" />
+        </Button>
+      </div>
+    </div>
+  );
+
       case 'final':
         return (
             <div className="flex flex-col items-center text-center animate-fade-in">
@@ -184,45 +181,59 @@ export default function PawsitivelySorry() {
           </div>
         )
       case 'forgiven':
-        return (
-            <div className="flex flex-col items-center justify-center text-center w-full h-full max-w-3xl">
-                <div className="relative w-full h-[32rem] md:h-[40rem] animate-fade-in" style={{ animationDelay: '1s' }}>
-                    {apologySlides.map((slide, index) => {
-                        const layout = collageLayout[index % collageLayout.length];
-                        const sizeClass = imageSizes[layout.size as keyof typeof imageSizes] || imageSizes.medium;
-                        return (
-                            <div 
-                                key={index}
-                                className="absolute animate-fade-in"
-                                style={{ 
-                                    top: layout.top, 
-                                    left: layout.left, 
-                                    transform: layout.transform,
-                                    animationDelay: `${1.5 + index * 0.2}s`,
-                                    animationDuration: '1s',
-                                }}
-                            >
-                                <Image
-                                  src={slide.image.src}
-                                  alt={slide.image.alt}
-                                  width={150}
-                                  height={150}
-                                  className={cn(
-                                      "rounded-2xl border-4 border-primary bg-card p-1 shadow-2xl object-cover transition-transform hover:scale-110 hover:shadow-primary/50",
-                                      sizeClass
-                                    )}
-                                  data-ai-hint={slide.image.hint}
-                                />
-                            </div>
-                        )
-                    })}
-                </div>
-                 <h1 className="text-4xl md:text-5xl font-headline mt-8 animate-fade-in" style={{ animationDelay: '0s', zIndex: 10 }}>You've made my heart so happy!</h1>
-                <p className="text-xl md:text-2xl mt-4 max-w-md animate-fade-in" style={{ animationDelay: '0.5s', zIndex: 10 }}>
-                    Here's to many more happy memories together!
-                </p>
+  return (
+    <div className="flex flex-col md:flex-row items-center justify-center text-left w-full h-full max-w-6xl gap-6 px-4">
+      {/* Left Side - Text */}
+<div className="md:w-1/2 w-full text-center md:text-left space-y-4">
+  <h5 className="text-3xl font-extrabold font-headline text-pink-700 drop-shadow-lg">
+    I know I mess things up sometimes, and yet, you always find it in your heart to forgive me. 💖
+  </h5>
+  <p className="text-2xl text-pink-600 font-medium drop-shadow-md">
+    That means the world to me. 🐾🌸
+  </p>
+  <p className="text-lg text-pink-500 italic mt-2 leading-relaxed">
+    You're not just close to my heart — you're where I truly feel at home. <br />
+    I’ll keep doing my best to love and cherish you more every single day. 🌸💖
+  </p>
+</div>
+
+
+
+      {/* Right Side - Image Collage */}
+      <div className="relative w-full md:w-1/2 h-[32rem] md:h-[40rem] animate-fade-in" style={{ animationDelay: '1s' }}>
+        {apologySlides.map((slide, index) => {
+          const layout = collageLayout[index % collageLayout.length];
+          const sizeClass = imageSizes[layout.size as keyof typeof imageSizes] || imageSizes.medium;
+          return (
+            <div 
+              key={index}
+              className="absolute animate-fade-in"
+              style={{ 
+                top: layout.top, 
+                left: layout.left, 
+                transform: layout.transform,
+                animationDelay: `${1.5 + index * 0.2}s`,
+                animationDuration: '1s',
+              }}
+            >
+              <Image
+                src={slide.image.src}
+                alt={slide.image.alt}
+                width={150}
+                height={150}
+                className={cn(
+                  "rounded-2xl border-4 border-pink-300 bg-card p-1 shadow-2xl object-cover transition-transform hover:scale-110 hover:shadow-pink-300/50",
+                  sizeClass
+                )}
+                data-ai-hint={slide.image.hint}
+              />
             </div>
-        )
+          );
+        })}
+      </div>
+    </div>
+  );
+
     }
   };
 
