@@ -65,14 +65,19 @@ const apologySlides = [
 ];
 
 const heartLayoutPositions = [
-  // A rough heart shape layout. These are percentages for top/left.
-  { top: '25%', left: '50%', transform: 'translate(-50%, -50%) scale(1.2)' }, // Top center (bigger)
-  { top: '40%', left: '30%', transform: 'translate(-50%, -50%)' },
-  { top: '40%', left: '70%', transform: 'translate(-50%, -50%)' },
-  { top: '55%', left: '20%', transform: 'translate(-50%, -50%)' },
-  { top: '55%', left: '80%', transform: 'translate(-50%, -50%)' },
-  { top: '70%', left: '50%', transform: 'translate(-50%, -50%)' }, // Bottom center
+  { top: '15%', left: '50%', transform: 'translate(-50%, -50%) scale(1.1) rotate(0deg)', size: 'large' }, 
+  { top: '35%', left: '30%', transform: 'translate(-50%, -50%) rotate(-20deg)', size: 'medium' },
+  { top: '35%', left: '70%', transform: 'translate(-50%, -50%) rotate(20deg)', size: 'medium' },
+  { top: '60%', left: '20%', transform: 'translate(-50%, -50%) rotate(-35deg)', size: 'small' },
+  { top: '60%', left: '80%', transform: 'translate(-50%, -50%) rotate(35deg)', size: 'small' },
+  { top: '85%', left: '50%', transform: 'translate(-50%, -50%) rotate(0deg)', size: 'medium' },
 ];
+
+const imageSizes = {
+    large: "w-36 h-36 md:w-48 md:h-48",
+    medium: "w-28 h-28 md:w-36 md:h-36",
+    small: "w-24 h-24 md:w-28 md:h-28",
+}
 
 export default function PawsitivelySorry() {
   const [step, setStep] = useState<Step>('intro');
@@ -167,9 +172,10 @@ export default function PawsitivelySorry() {
                 <p className="text-xl md:text-2xl mt-4 max-w-md animate-fade-in" style={{animationDelay: '0.5s'}}>
                     Here's to many more happy memories together!
                 </p>
-                <div className="relative w-full h-[30rem] mt-8 animate-fade-in" style={{animationDelay: '1s'}}>
+                <div className="relative w-full h-[32rem] mt-8 animate-fade-in" style={{animationDelay: '1s'}}>
                     {apologySlides.map((slide, index) => {
                         const position = heartLayoutPositions[index % heartLayoutPositions.length];
+                        const sizeClass = imageSizes[position.size as keyof typeof imageSizes] || imageSizes.medium;
                         return (
                             <div 
                                 key={index}
@@ -178,7 +184,8 @@ export default function PawsitivelySorry() {
                                     top: position.top, 
                                     left: position.left, 
                                     transform: position.transform,
-                                    animationDelay: `${1.5 + index * 0.2}s`
+                                    animationDelay: `${1.5 + index * 0.25}s`,
+                                    animationDuration: '1s',
                                 }}
                             >
                                 <Image
@@ -186,7 +193,10 @@ export default function PawsitivelySorry() {
                                   alt={slide.image.alt}
                                   width={150}
                                   height={150}
-                                  className="rounded-2xl border-4 border-primary shadow-2xl object-cover w-28 h-28 md:w-36 md:h-36 transition-transform hover:scale-110"
+                                  className={cn(
+                                      "rounded-2xl border-4 border-primary shadow-2xl object-cover transition-transform hover:scale-110 hover:shadow-primary/50",
+                                      sizeClass
+                                    )}
                                   data-ai-hint={slide.image.hint}
                                 />
                             </div>
