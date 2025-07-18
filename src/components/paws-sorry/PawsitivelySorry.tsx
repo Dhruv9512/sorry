@@ -1,7 +1,9 @@
+
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Heart, ChevronsRight, Gift } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import AudioPlayer from './AudioPlayer';
 import FallingFlowers from './FallingFlowers';
@@ -12,11 +14,19 @@ import { cn } from '@/lib/utils';
 type Step = 'intro' | 'slideshow' | 'final' | 'forgiven';
 
 const apologySlides = [
-  "I've been thinking a lot about what happened...",
-  "...and I realize how much my actions hurt you.",
-  "It was thoughtless and I have no excuse.",
-  "You are so important to me, and the thought of losing you is unbearable.",
-  "I am truly, paws-itively sorry.",
+  { text: "I've been a silly kitty and I've been thinking a lot about what happened..." },
+  { 
+    text: "Especially how it made my favorite person feel.",
+    image: {
+      src: "https://placehold.co/400x400.png",
+      alt: "A picture of the person being apologized to",
+      hint: "woman smiling"
+    }
+  },
+  { text: "...and I realize my actions were not very purr-fect." },
+  { text: "It was thoughtless and I have no excuse. I'm so sorry." },
+  { text: "You're the most important person in my world, and the thought of losing you is un-bear-able." },
+  { text: "I am truly, paws-itively sorry from the bottom of my fluffy heart." },
 ];
 
 export default function PawsitivelySorry() {
@@ -53,25 +63,38 @@ export default function PawsitivelySorry() {
         return (
           <div className="flex flex-col items-center text-center animate-fade-in">
             <ShyCat />
-            <h1 className="text-4xl md:text-5xl font-headline mt-4">Hey,</h1>
+            <h1 className="text-4xl md:text-5xl font-headline mt-4">Um... hey,</h1>
             <p className="text-xl md:text-2xl mt-4 max-w-md">
-              I know I messed up... and I'm so sorry.
+              I know I messed up... and I'm really, really sorry.
             </p>
             <Button onClick={handleIntroClick} className="font-headline mt-8" size="lg">
-              <Heart className="mr-2" /> Tap to hear my heart (meow)
+              <Heart className="mr-2" /> Tap to hear my apology
             </Button>
           </div>
         );
       case 'slideshow':
+        const currentSlide = apologySlides[slideIndex];
         return (
           <div
             className="flex flex-col items-center justify-center text-center p-4 w-full h-full bg-cover bg-center rounded-2xl"
             style={{ backgroundImage: "url('https://placehold.co/1920x1080.png')", backgroundBlendMode: 'overlay' }}
             data-ai-hint="soft focus flower garden"
           >
-             <div className="bg-background/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-xl">
-                <p className={cn("text-2xl md:text-3xl min-h-[140px] md:min-h-[100px] flex items-center justify-center transition-opacity duration-500", showSlide ? 'opacity-100' : 'opacity-0')}>
-                {apologySlides[slideIndex]}
+             <div className={cn("bg-background/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl max-w-xl transition-opacity duration-500", showSlide ? 'opacity-100' : 'opacity-0')}>
+                {currentSlide.image && (
+                   <div className="mb-6 flex justify-center">
+                    <Image
+                      src={currentSlide.image.src}
+                      alt={currentSlide.image.alt}
+                      width={200}
+                      height={200}
+                      className="rounded-full border-4 border-primary/50 shadow-lg object-cover w-48 h-48"
+                      data-ai-hint={currentSlide.image.hint}
+                    />
+                  </div>
+                )}
+                <p className="text-2xl md:text-3xl min-h-[140px] md:min-h-[100px] flex items-center justify-center">
+                  {currentSlide.text}
                 </p>
                 <Button onClick={handleNextSlide} className="font-headline mt-6" size="lg">
                 <ChevronsRight className="mr-2" /> Next
@@ -83,12 +106,12 @@ export default function PawsitivelySorry() {
         return (
             <div className="flex flex-col items-center text-center animate-fade-in">
                 <CatWithBanner />
-                <h1 className="text-3xl md:text-4xl font-headline mt-4">Please forgive me...</h1>
+                <h1 className="text-3xl md:text-4xl font-headline mt-4">Will you forgive this foolish kitty?</h1>
                 <p className="text-xl md:text-2xl mt-4 max-w-lg">
                 You mean the world to me. Can we please be best friends again?
                 </p>
                 <Button onClick={handleForgiveClick} className="font-headline mt-8" size="lg">
-                    <Heart className="mr-2 fill-primary-foreground" /> Forgive Me?
+                    <Heart className="mr-2 fill-primary-foreground" /> Yes, I forgive you
                 </Button>
           </div>
         )
@@ -98,7 +121,7 @@ export default function PawsitivelySorry() {
                 <Gift size={80} className="text-primary-foreground bg-primary p-4 rounded-full" />
                 <h1 className="text-4xl md:text-5xl font-headline mt-8">Thank You!</h1>
                 <p className="text-xl md:text-2xl mt-4 max-w-md">
-                You've made my heart meow with joy!
+                You've made my heart do a happy little meow!
                 </p>
             </div>
         )
