@@ -88,7 +88,7 @@ export default function PawsitivelySorry() {
                       alt={currentSlide.image.alt}
                       width={200}
                       height={200}
-                      className="rounded-full border-4 border-primary/50 shadow-lg object-cover w-48 h-48"
+                      className="rounded-2xl border-4 border-primary/50 shadow-lg object-cover w-48 h-48"
                       data-ai-hint={currentSlide.image.hint}
                     />
                   </div>
